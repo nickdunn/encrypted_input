@@ -22,7 +22,7 @@
 			return Symphony::Database()->insert($fields, 'tbl_fields_' . $this->handle());
 		}
 		
-		public function displaySettingsPanel(&$wrapper, $errors = null) {
+		public function displaySettingsPanel(XMLElement &$wrapper, $errors = NULL) {
 			parent::displaySettingsPanel($wrapper, $errors);
 			
 			$div = new XMLElement('div', NULL, array('class' => 'compact'));
@@ -30,7 +30,7 @@
 			$wrapper->appendChild($div);
 		}
 		
-		public function displayPublishPanel(&$wrapper, $data=NULL, $flagWithError=NULL, $fieldnamePrefix=NULL, $fieldnamePostfix=NULL, $entry_id = null){
+		public function displayPublishPanel(XMLElement &$wrapper, $data = NULL, $flagWithError = NULL, $fieldnamePrefix = NULL, $fieldnamePostfix = NULL, $entry_id = NULL){
 		    
 			$value = General::sanitize($data['value']);
 			$label = Widget::Label($this->get('label'));
@@ -52,7 +52,7 @@
 			
 		}
 		
-		function appendFormattedElement(&$wrapper, $data, $encode=FALSE, $mode=NULL, $entry_id=NULL){
+		function appendFormattedElement(XMLElement &$wrapper, $data, $encode = false, $mode = NULL, $entry_id = NULL){
 			if(!is_array($data) || empty($data['value'])) return;
 			
 			$value = $this->decrypt($data['value']);
